@@ -233,4 +233,8 @@ $(function() {
         }); 
 
     });
+    $('#printBtn').on('click', function (){
+        console.log('clicked Print');
+        window.print();
+    });
 });

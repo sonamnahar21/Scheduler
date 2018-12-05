@@ -5,6 +5,7 @@
         <script src='./fullcalendar-3.9.0//lib/jquery.min.js'></script>
         <script src='./fullcalendar-3.9.0/lib/moment.min.js'></script>
         <script src='./fullcalendar-3.9.0/fullcalendar.js'></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.print.css " rel="stylesheet" type="text/css" media="print" />
         <!---->
         <!--Bootstrap scripts and css-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -16,7 +17,7 @@
     </head>
     <body>
         <div id='calendar'></div>  
-        <input type="submit" name="export" class="btn btn-success" value="Export" id= "export_data"/>
+        <input type="submit" name="print" class="btn btn-success hidden-print" value="print" id= "printBtn"/>
         <div class="modal fade" id="input_fullCalModal" role="dialog" >
                 <div class="modal-dialog">
                     <div class="modal-content">
