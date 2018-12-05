@@ -7,10 +7,9 @@ $(function() {
         header: 
         {
             left: 'prev,next today',
-            center: 'addEventButton',
+            center: 'addEventButton, showMySchedule',
             right: 'month,agendaWeek,agendaDay,listWeek'
         },
-   
         events:function(start, end, timezone, callback) {        
             $.ajax({
                 url: './dataGet.php',   
@@ -30,9 +29,8 @@ $(function() {
                     callback(events);
                 }
             });
-        },
-            
-        editable: false,
+        },  
+        editable: true,
         eventLimit: true, // allow "more" link when too many events
         navLinks: true,
         eventClick:  function(event, jsEvent, view) {
@@ -56,10 +54,10 @@ $(function() {
                     $('#input_endtime').val(data[0]["end_time"]);
                     // $("#inputForm :input").prop("disabled", true);
                     $("#created").text(data[0]["created"]);
-                    // $("#submit").hide();
-                    // $("#close").hide();
-                    // $("#approve").show();
-                    // $("#reject").show();
+                    $("#submit").hide();
+                    $("#close").hide();
+                    $("#approve").show();
+                    $("#reject").show();
                     $('#approve').on('click', function() {
                         var enteredDate = $('#input_date').val();
                         var enteredStartTime = $('#input_starttime').val();
@@ -115,11 +113,42 @@ $(function() {
         //     $('#input_title').val(date.format())
         // },
         customButtons: {
+            showMySchedule: {
+                text: 'My Shifts',
+                click: function() {
+                $.ajax({
+                    type: "GET",
+                    url: "./mySchedule.php",
+                    data: { 
+                        name: 'sonam'
+                    },
+                    success: function(result){
+                        var data = JSON.parse(result);
+                        var events = []
+                        for (i = 0; i < data.length; i++) {
+                            events.push({
+                                title: data[i]["name"],
+                                start: data[i]["date"]+'T'+data[i]["start_time"],
+                                end: data[i]["date"]+'T'+data[i]["end_time"],
+                                color: assignColor(data[i]["location"],data[i]["status"] ), 
+                            });
+                        }
+                        console.log(events);
+                        $('#calendar').fullCalendar('removeEvents');
+                        $('#calendar').fullCalendar( 'addEventSource', events );             
+                    }
+                });  
+            }
+            },
             addEventButton: {
-              text: 'Add Availability...',
+              text: 'Add Availability',
               click: function() {
                 $("#input_fullCalModal").modal();
                 $("#inputForm").trigger("reset");
+                $("#submit").show();
+                $("#close").show();
+                $("#approve").hide();
+                $("#reject").hide();
                 $("#created").text('');
                 $("reqID").text('');
                 $('#submit').on('click', function() {
@@ -168,7 +197,7 @@ $(function() {
 
                 });
               }
-            }
+            },
           }
     })
     
@@ -190,4 +219,18 @@ $(function() {
        
         return color
     }
-  });
+    
+    $('#export_data').on('click', function() {
+        $.ajax({
+            type: "POST",
+            url: "./dataExport.php",
+            data: { 
+                // name: 'sonam'
+            },
+            success: function(result){
+                alert(result);
+            }
+        }); 
+
+    });
+});

@@ -16,6 +16,7 @@
     </head>
     <body>
         <div id='calendar'></div>  
+        <input type="submit" name="export" class="btn btn-success" value="Export" id= "export_data"/>
         <div class="modal fade" id="input_fullCalModal" role="dialog" >
                 <div class="modal-dialog">
                     <div class="modal-content">
