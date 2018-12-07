@@ -1,11 +1,13 @@
 <?php  
-include_once('./connection.php');
+//export.php  
 if(isset($_POST["export"]))
 {
-    $sql = "SELECT `id`,`name`,`location`, `status` FROM `availability`"; 
+    $conn = new mysqli('localhost', 'root', 'root'); 
+    mysqli_select_db($conn, 'scheduling'); 
+    $sql = "SELECT `id`,`name`,`location` FROM `availability`"; 
     $setRec = mysqli_query($conn, $sql); 
     $columnHeader = ''; 
-    $columnHeader = "Id" . "\t" . "Name" . "\t" . "Location" . "\t".  "Status" . "\t"; 
+    $columnHeader = "Id" . "\t" . "Name" . "\t" . "Location" . "\t"; 
     $setData = ''; 
     while ($rec = mysqli_fetch_row($setRec)) { 
     $rowData = ''; 

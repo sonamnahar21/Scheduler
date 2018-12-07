@@ -18,6 +18,10 @@
     <body>
         <div id='calendar'></div>  
         <input type="submit" name="print" class="btn btn-success hidden-print" value="print" id= "printBtn"/>
+        <!-- <a class="btn btn-warning" href = "./dataExport.php?export=true">Export to Excel</a> -->
+        <form method="post" action="dataExport.php">
+            <input type="submit" name="export" class="btn btn-success" value="Export" />
+        </form>
         <div class="modal fade" id="input_fullCalModal" role="dialog" >
                 <div class="modal-dialog">
                     <div class="modal-content">
