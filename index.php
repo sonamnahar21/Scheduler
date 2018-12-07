@@ -17,8 +17,7 @@
     </head>
     <body>
         <div id='calendar'></div>  
-        <input type="submit" name="print" class="btn btn-success hidden-print" value="print" id= "printBtn"/>
-        <!-- <a class="btn btn-warning" href = "./dataExport.php?export=true">Export to Excel</a> -->
+        <!-- <input type="submit" name="print" class="btn btn-success hidden-print" value="print" id= "printBtn"/> -->
         <form method="post" action="dataExport.php">
             <input type="submit" name="export" class="btn btn-success" value="Export" />
         </form>

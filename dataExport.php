@@ -1,8 +1,11 @@
 <?php  
 include_once('./connection.php');
-if(isset($_POST["export"]))
+// if(isset($_POST["export"]))
+if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-    $sql = "SELECT `id`,`name`,`location`, `status` FROM `availability`"; 
+    $inputData =  'sonam';   //to get data from ajax 
+    // echo $inputData;
+    $sql = "SELECT `id`,`name`,`location`, `status` FROM `availability`where name =  '".$inputData."' "; 
     $setRec = mysqli_query($conn, $sql); 
     $columnHeader = ''; 
     $columnHeader = "Id" . "\t" . "Name" . "\t" . "Location" . "\t".  "Status" . "\t"; 

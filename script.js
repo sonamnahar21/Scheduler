@@ -7,7 +7,7 @@ $(function() {
         header: 
         {
             left: 'prev,next today',
-            center: 'addEventButton, showMySchedule',
+            center: 'addEventButton, showMySchedule, printView, exportToExcel',
             right: 'month,agendaWeek,agendaDay,listWeek'
         },
         events:function(start, end, timezone, callback) {        
@@ -113,6 +113,28 @@ $(function() {
         //     $('#input_title').val(date.format())
         // },
         customButtons: {
+            printView: {
+                text: 'Print',
+                click: function() {
+                    console.log('clicked Print');
+                    window.print();
+                }
+            },
+            exportToExcel: {
+                text: 'Export',
+                click: function() {
+                    $.ajax({
+                        type: "POST",
+                        url: "./dataExport.php",
+                        data: { 
+                            name: 'sonam'
+                        },
+                        success: function(result){
+                          console.log(result);
+                        }
+                    })
+                }
+            },
             showMySchedule: {
                 text: 'My Shifts',
                 click: function() {
@@ -219,22 +241,4 @@ $(function() {
        
         return color
     }
-    
-    $('#export_data').on('click', function() {
-        $.ajax({
-            type: "POST",
-            url: "./dataExport.php",
-            data: { 
-                // name: 'sonam'
-            },
-            success: function(result){
-                alert(result);
-            }
-        }); 
-
-    });
-    $('#printBtn').on('click', function (){
-        console.log('clicked Print');
-        window.print();
-    });
 });
