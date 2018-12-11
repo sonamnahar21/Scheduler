@@ -16,17 +16,17 @@
         <link rel="stylesheet" src= './style.css'/>
     </head>
     <body>
+        <form method="post" action="dataExport.php">
+            <input  type="submit" name="export" class="btn btn-success" value="Export" />
+        </form>
         <div id='calendar'></div>  
         <!-- <input type="submit" name="print" class="btn btn-success hidden-print" value="print" id= "printBtn"/> -->
-        <form method="post" action="dataExport.php">
-            <input type="submit" name="export" class="btn btn-success" value="Export" />
-        </form>
         <div class="modal fade" id="input_fullCalModal" role="dialog" >
                 <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title">Enter Your Availability</h4>
+                      <h4 class="modal-title" id='modal-title'>Enter Your Availability</h4>
                     </div>
                     <div class="modal-body">
                         <form id="inputForm">

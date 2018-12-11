@@ -5,10 +5,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     $inputData =  'sonam';   //to get data from ajax 
     // echo $inputData;
-    $sql = "SELECT `id`,`name`,`location`, `status` FROM `availability`where name =  '".$inputData."' "; 
+    $sql = "SELECT `id`,`name`,`location`, `status`, `date`,`start_time`,`end_time`, `break_time` FROM `availability`where name =  '".$inputData."' "; 
     $setRec = mysqli_query($conn, $sql); 
     $columnHeader = ''; 
-    $columnHeader = "Id" . "\t" . "Name" . "\t" . "Location" . "\t".  "Status" . "\t"; 
+    $columnHeader = "Id" . "\t" . "Name" . "\t" . "Location" . "\t".  "Status" . "\t".  "Date" . "\t".  "Start Time" . "\t".  "End Time" . "\t".  "Break Time" . "\t"; 
     $setData = ''; 
     while ($rec = mysqli_fetch_row($setRec)) { 
     $rowData = ''; 

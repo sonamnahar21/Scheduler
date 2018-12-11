@@ -44,6 +44,7 @@ $(function() {
                 {
                     var data = $.parseJSON(result);
                     $("#input_fullCalModal").modal();
+                    $('#modal-title').text("Your Schedule");
                     $('#reqID').text(data[0]["id"]);
                     $('#input_name').val(data[0]["name"]);
                     $("#location").val(data[0]["location"]);
@@ -81,6 +82,9 @@ $(function() {
                             },
                             success: function(result){
                                 alert(result);
+                                setTimeout(function(){// wait for 5 secs(2)
+                                    location.reload(); // then reload the page.(3)
+                                }, 1000); 
                             }
                         }); 
                         $("#inputForm").trigger("reset");
@@ -213,6 +217,10 @@ $(function() {
                                 location: $("#location option:selected").val(),
         
                             }); 
+                            
+                            setTimeout(function(){// wait for 5 secs(2)
+                                    location.reload(); // then reload the page.(3)
+                            }, 1000); 
                         }
                     }); 
                     $("#inputForm").trigger("reset");
