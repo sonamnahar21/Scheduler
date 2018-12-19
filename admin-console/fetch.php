@@ -1,5 +1,5 @@
 <?php
-include_once('../connection.php');
+include_once('../data-ops/connection.php');
 $columns = array('id', 'name');
 
 $query = "SELECT * FROM availability ";
