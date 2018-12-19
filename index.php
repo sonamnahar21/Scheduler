@@ -12,13 +12,14 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <!---->
       
-        <script src="./script.js"></script>
+        <script src="./scripts/script.js"></script>
         <link rel="stylesheet" src= './style.css'/>
     </head>
     <body>
-        <form method="post" action="dataExport.php">
+        <form method="post" action="./data-ops/dataExport.php">
             <input  type="submit" name="export" class="btn btn-success" value="Export" />
         </form>
+        <input  type="submit" name="admin" id= "admin" class="btn btn-success" value="Admin Console" />
         <div id='calendar'></div>  
         <!-- <input type="submit" name="print" class="btn btn-success hidden-print" value="print" id= "printBtn"/> -->
         <div class="modal fade" id="input_fullCalModal" role="dialog" >

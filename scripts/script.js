@@ -7,12 +7,12 @@ $(function() {
         header: 
         {
             left: 'prev,next today',
-            center: 'addEventButton, showMySchedule, printView, exportToExcel',
+            center: 'addEventButton, showMySchedule, printView',
             right: 'month,agendaWeek,agendaDay,listWeek'
         },
         events:function(start, end, timezone, callback) {        
             $.ajax({
-                url: './dataGet.php',   
+                url: './data-ops/dataGet.php',   
                 type: "GETALL",
                 success: function(result)         
                 {
@@ -35,7 +35,7 @@ $(function() {
         navLinks: true,
         eventClick:  function(event, jsEvent, view) {
             $.ajax({
-                url: './dataGet.php',   
+                url: './data-ops/dataGet.php',   
                 type: "GET",
                 data: { 
                     name: event.title,
@@ -44,7 +44,7 @@ $(function() {
                 {
                     var data = $.parseJSON(result);
                     $("#input_fullCalModal").modal();
-                    $('#modal-title').text("Your Schedule");
+                    $('#modal-title').text("Your Shift");
                     $('#reqID').text(data[0]["id"]);
                     $('#input_name').val(data[0]["name"]);
                     $("#location").val(data[0]["location"]);
@@ -69,7 +69,7 @@ $(function() {
                         // start format : 2018-11-01T6:00:00,  color: '#257e4a'
                         $.ajax({
                             type: "POST",
-                            url: "./dataUpdate.php",
+                            url: "./data-ops/dataUpdate.php",
                             data: { 
                                 id : data[0]["id"],
                                 name: $('#input_name').val(),
@@ -92,7 +92,7 @@ $(function() {
                     $('#reject').on('click', function() {
                         $.ajax({
                             type: "POST",
-                            url: "./dataDelete.php",
+                            url: "./data-ops/dataDelete.php",
                             data: { 
                                 id : data[0]["id"],
                             },
@@ -124,27 +124,27 @@ $(function() {
                     window.print();
                 }
             },
-            exportToExcel: {
-                text: 'Export',
-                click: function() {
-                    $.ajax({
-                        type: "POST",
-                        url: "./dataExport.php",
-                        data: { 
-                            name: 'sonam'
-                        },
-                        success: function(result){
-                          console.log(result);
-                        }
-                    })
-                }
-            },
+            // exportToExcel: {
+            //     text: 'Export',
+            //     click: function() {
+            //         $.ajax({
+            //             type: "POST",
+            //             url: "./data-ops/dataExport.php",
+            //             data: { 
+            //                 name: 'sonam'
+            //             },
+            //             success: function(result){
+            //               console.log(result);
+            //             }
+            //         })
+            //     }
+            // },
             showMySchedule: {
                 text: 'My Shifts',
                 click: function() {
                 $.ajax({
                     type: "GET",
-                    url: "./mySchedule.php",
+                    url: "./data-ops/mySchedule.php",
                     data: { 
                         name: 'sonam'
                     },
@@ -193,7 +193,7 @@ $(function() {
                     // start format : 2018-11-01T6:00:00,  color: '#257e4a'
                     $.ajax({
                         type: "POST",
-                        url: "./dataCreate.php",
+                        url: "./data-ops/dataCreate.php",
                         data: { 
                             name: $('#input_name').val(),
                             location:$('#location').val() ,
@@ -249,4 +249,9 @@ $(function() {
        
         return color
     }
+    $('#admin').click(function() {
+        console.log('admin');
+        window.location.href = './admin-console/admin-console.php';
+        return false;
+    });
 });
