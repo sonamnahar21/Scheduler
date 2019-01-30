@@ -21,9 +21,10 @@ $(function() {
                     for (i = 0; i < data.length; i++) {
                         events.push({
                             title: data[i]["name"],
+                            id: data[i]["id"],
                             start: data[i]["date"]+'T'+data[i]["start_time"],
                             end: data[i]["date"]+'T'+data[i]["end_time"],
-                            color: assignColor(data[i]["location"],data[i]["status"] ), 
+                            color: assignColor(data[i]["location"],data[i]["status"] ),
                         });
                     }
                     callback(events);
@@ -38,7 +39,7 @@ $(function() {
                 url: './data-ops/dataGet.php',   
                 type: "GET",
                 data: { 
-                    name: event.title,
+                    id: event.id,
                 },
                 success: function(result)         
                 {

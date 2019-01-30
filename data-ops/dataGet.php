@@ -1,9 +1,9 @@
 <?php
 include_once('./connection.php');
 if($_SERVER['REQUEST_METHOD'] == 'GET'){
-    $inputData =  $_GET["name"];   //to get data from ajax 
+    $inputData =  $_GET["id"];   //to get data from ajax 
     $result_array = array();
-    $sql = "SELECT * from availability where name =  '".$inputData."' ";
+    $sql = "SELECT * from availability where id =  '".$inputData."' ";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {

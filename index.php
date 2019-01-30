@@ -20,6 +20,8 @@
             <input  type="submit" name="export" class="btn btn-success" value="Export" />
         </form>
         <input  type="submit" name="admin" id= "admin" class="btn btn-success" value="Admin Console" />
+        <!-- <input  type="submit" name="admin_test" id= "admin_test" class="btn btn-success" value="admin_test" /> -->
+
         <div id='calendar'></div>  
         <!-- <input type="submit" name="print" class="btn btn-success hidden-print" value="print" id= "printBtn"/> -->
         <div class="modal fade" id="input_fullCalModal" role="dialog" >
