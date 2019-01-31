@@ -20,7 +20,7 @@ $(function() {
                     var events = [];
                     for (i = 0; i < data.length; i++) {
                         events.push({
-                            title: data[i]["name"],
+                            title: data[i]["name"] + "\n Break Time : " + data[i]["break_time"],
                             id: data[i]["id"],
                             start: data[i]["date"]+'T'+data[i]["start_time"],
                             end: data[i]["date"]+'T'+data[i]["end_time"],
